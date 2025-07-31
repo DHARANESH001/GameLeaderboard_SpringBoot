@@ -1,0 +1,98 @@
+.profile-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #40e0d0;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  background-color: #007c7a;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  background-color: #00b3b3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-weight: bold;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.edit-btn {
+  background-color: #008080;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.edit-btn:hover {
+  background-color: #006666;
+}
+
+.profile-right {
+  width: 75%;
+  background-color: #007c7a;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.info-box p {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.user-info p {
+  margin: 8px 0;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-form input,
+.edit-form textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-actions button {
+  padding: 8px 15px;
+  border-radius: 20px;
+  background-color: #00b3b3;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.form-actions button:hover {
+  background-color: #006666;
+}
