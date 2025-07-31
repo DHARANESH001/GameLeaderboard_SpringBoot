@@ -33,4 +33,7 @@ private String phone;
 @Column
 private String address;
 
+@Column(name = "profile_image", columnDefinition = "LONGBLOB")
+private byte[] profileImage;
+
 }

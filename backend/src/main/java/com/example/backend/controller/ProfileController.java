@@ -6,6 +6,7 @@ import com.example.backend.config.JwtUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
@@ -65,4 +66,42 @@ public class ProfileController {
         String jwt = token.substring(7); // Remove "Bearer "
         return jwtUtil.extractEmail(jwt); // Updated method
     }
+    @PostMapping("/upload-image")
+public ResponseEntity<String> uploadProfileImage(
+        @RequestHeader("Authorization") String token,
+        @RequestParam("image") MultipartFile file) {
+    try {
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().body("Please select an image.");
+        }
+
+        String email = jwtUtil.extractUsername(token.substring(7));
+        User user = userService.getUserByEmail(email);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+
+        user.setProfileImage(file.getBytes());
+        userService.saveUser(user);
+
+        return ResponseEntity.ok("Image uploaded successfully!");
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload image.");
+    }
+}
+
+@GetMapping("/profile-image")
+public ResponseEntity<byte[]> getProfileImage(@RequestHeader("Authorization") String token) {
+    String email = jwtUtil.extractUsername(token.substring(7));
+    User user = userService.getUserByEmail(email);
+
+    if (user == null || user.getProfileImage() == null) {
+        return ResponseEntity.notFound().build();
+    }
+
+    return ResponseEntity.ok()
+            .header("Content-Type", "image/jpeg") // Adjust type if needed
+            .body(user.getProfileImage());
+}
+
 }

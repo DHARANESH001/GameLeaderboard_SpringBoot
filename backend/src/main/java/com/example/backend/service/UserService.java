@@ -28,6 +28,9 @@ public class UserService {
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email).orElse(null);
     }
+    public User saveUser(User user) {
+    return userRepository.save(user);
+}
 
     // ✅ Update only personal details
     public User updateProfile(String email, User updatedUser) {

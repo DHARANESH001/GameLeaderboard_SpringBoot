@@ -5,8 +5,8 @@ import GameHome from './components/gamehome/gamehome';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import LeaderBoard from './components/options/LeaderBoard';
-import Play from './components/options/Play';
-import Profile from './components/options/Profile';
+import Play from './components/play/Play';
+import Profile from './components/profile/Profile';
 
 const App = () => {
   return (
