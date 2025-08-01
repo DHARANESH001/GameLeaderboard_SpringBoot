@@ -1,0 +1,107 @@
+/* Full Screen Background */
+.leaderboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+/* Header Bar */
+.header-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.home-btn {
+  position: absolute;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+}
+
+.home-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.leaderboard-title {
+  font-size: 42px;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Card Container */
+.leaderboard-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Table */
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.leaderboard-table th {
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 20px;
+  color: #fff;
+}
+
+.leaderboard-table tr {
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.leaderboard-table tr:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.02);
+}
+
+/* Highlight Top 3 */
+.rank-1 {
+  background: rgba(255, 215, 0, 0.2);
+  font-weight: bold;
+}
+
+.rank-2 {
+  background: rgba(192, 192, 192, 0.2);
+}
+
+.rank-3 {
+  background: rgba(205, 127, 50, 0.2);
+}
+
+.no-data {
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  color: #ccc;
+}

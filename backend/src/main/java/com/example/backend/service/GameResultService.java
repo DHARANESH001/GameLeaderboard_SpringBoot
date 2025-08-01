@@ -1,11 +1,14 @@
 package com.example.backend.service;
 
+import com.example.backend.dto.LeaderBoardDTO;
 import com.example.backend.entity.GameResult;
 import com.example.backend.entity.User;
 import com.example.backend.repository.GameResultRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class GameResultService {
@@ -27,5 +30,12 @@ public class GameResultService {
             GameResult result = new GameResult(user, user.getUsername(), 1);
             return gameResultRepository.save(result);
         }
+    }
+
+    // ✅ Fetch leaderboard
+    public List<LeaderBoardDTO> getLeaderBoard() {
+        return gameResultRepository.findAllOrderByWinsDesc().stream()
+                .map(result -> new LeaderBoardDTO(result.getUsername(), result.getWins()))
+                .collect(Collectors.toList());
     }
 }
