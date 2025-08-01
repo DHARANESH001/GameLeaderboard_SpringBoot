@@ -12,10 +12,16 @@ const Play = () => {
   const audioRef = useRef(new Audio("/music.mp3"));
   const navigate = useNavigate();
 
-  // ✅ Auto-play music
+  // ✅ Auto-play music and stop on unmount
   useEffect(() => {
-    audioRef.current.loop = true;
-    audioRef.current.play().catch((err) => console.log("Autoplay blocked:", err));
+    const audio = audioRef.current;
+    audio.loop = true;
+    audio.play().catch((err) => console.log("Autoplay blocked:", err));
+
+    return () => {
+      audio.pause();
+      audio.currentTime = 0; // Reset to start
+    };
   }, []);
 
   // ✅ Computer's turn (O)
@@ -89,7 +95,8 @@ const Play = () => {
   };
 
   const toggleMute = () => {
-    audioRef.current.muted = !isMuted;
+    const audio = audioRef.current;
+    audio.muted = !isMuted;
     setIsMuted(!isMuted);
   };
 

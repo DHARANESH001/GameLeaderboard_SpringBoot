@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 
 const Profile = () => {
@@ -17,6 +18,7 @@ const Profile = () => {
 
   const tokenData = localStorage.getItem("user");
   const token = tokenData ? JSON.parse(tokenData).token : null;
+  const navigate = useNavigate(); // ✅ For navigation
 
   // ✅ Fetch Profile and Image
   useEffect(() => {
@@ -125,11 +127,21 @@ const Profile = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("user"); // ✅ Clear token and user data
+    navigate("/"); // ✅ Redirect to Home page
+  };
+
   if (loading) return <div className="profile-container">Loading...</div>;
   if (error) return <div className="profile-container">Error: {error}</div>;
 
   return (
     <div className="profile-container">
+      {/* Logout Button */}
+      <div className="logout-container">
+        <button className="logout-btn" onClick={handleLogout}>Logout</button>
+      </div>
+
       {/* Left Section */}
       <div className="profile-left">
         <div className="profile-photo">
